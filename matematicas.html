@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preguntas de Matemáticas</title>
+
+<style>
+/* ==================== RESET Y BODY ==================== */
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ==================== CABECERA ==================== */
+header{
+    background: #222;
+    color: white;
+    padding: 15px 20px;
+    font-size: 24px;
+    text-align: center;
+}
+
+/* ==================== CONTENEDOR PRINCIPAL ==================== */
+#main{
+    display: flex;
+    flex: 1;
+    padding: 10px;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ==================== CONTENEDOR JUEGO ==================== */
+#contenedor{
+    flex: 1 1 500px;
+    max-width: 700px;
+    min-width: 400px;
+    min-height: 500px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* PUBLICIDAD */
+#ad{
+    width: 100%;
+    background: #e2e2e2;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+/* CRONOMETRO */
+#cronometro{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* PREGUNTA */
+#pregunta{
+    font-size: 20px;
+    margin-bottom: 15px;
+    min-height: 60px; /* tamaño fijo */
+    text-align: center;
+}
+
+/* OPCIONES */
+#opciones{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.opcion{
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background: #e2e2e2;
+}
+.opcion:hover{
+    background: #d4d4d4;
+}
+
+/* RESULTADO reemplazado por TOP 5 dinámico */
+#resultado{
+    margin-top: 10px;
+    font-size: 16px;
+    min-height: 80px; /* deja espacio para TOP 5 */
+    text-align: center;
+}
+
+/* ==================== PANEL DERECHO ==================== */
+#panel{
+    flex: 0 0 130px;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 120px;
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+/* MIS PUNTOS */
+#misPuntos{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* BOTON REGISTRAR */
+#registrar{
+    display: none;
+    width: 100%;
+    padding: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* ==================== BOTON PAUSA ==================== */
+#pausa{
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media(max-width:800px){
+    #main{
+        flex-direction: column;
+        align-items: center;
+    }
+    #panel{
+        position: relative;
+        top: 0;
+        width: 90%;
+    }
+    #contenedor{
+        width: 90%;
+        min-width: auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>Preguntas de Matemáticas</header>
+
+<div id="main">
+
+    <!-- CONTENEDOR JUEGO -->
+    <div id="contenedor">
+
+        <!-- ESPACIO PUBLICIDAD -->
+        <div id="ad">
+            Publicidad
+        </div>
+
+        <!-- CRONOMETRO -->
+        <div id="cronometro">
+            <span id="tiempo">5</span>
+        </div>
+a        <!-- PREGUNTA -->
+        <div id="pregunta"></div>
+
+        <!-- OPCIONES -->
+        <div id="opciones"></div>
+
+        <!-- RESULTADO reemplazado por TOP 5 dentro del contenedor -->
+        <div id="resultado">
+            <b>TOP 5:</b>
+            <ol id="listaTopInside">
+                <li>---</li>
+                <li>---</li>
+                <li>---</li>
+                <li>---</li>
+                <li>---</li>
+            </ol>
+        </div>
+
+    </div>
+
+    <!-- PANEL DERECHO -->
+    <div id="panel">
+        <div id="misPuntos">
+            Puntos: <span id="puntos">0</span>
+        </div>
+        <button id="registrar">Registrar Puntaje</button>
+    </div>
+
+</div>
+
+<!-- BOTON PAUSA -->
+<button id="pausa">Pausa</button>
+
+<!-- MOTOR -->
+<script type="module" src="motor.js"></script>
+
+</body>
+</html>
