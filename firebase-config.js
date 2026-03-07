@@ -1,4 +1,3 @@
-// Importar Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import { 
@@ -22,12 +21,6 @@ const firebaseConfig = {
     appId: "1:423887546802:web:789db2a2ce774518ce5cab",
     measurementId: "G-E6LPVTM1PJ"
   };
-
-// Inicializar Firebase
 const app = initializeApp(firebaseConfig);
-
-// Inicializar Firestore
 const db = getFirestore(app);
-
-// exportar base de datos
 export { db, collection, getDocs, addDoc, query, where, orderBy, limit };
